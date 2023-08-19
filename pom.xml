@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.wx</groupId>
-  <artifactId>shopping</artifactId>
+  <artifactId>shopping_mall</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
 
@@ -34,11 +34,13 @@
         <qiniu-java-sdk.version>[7.2.0, 7.2.99]</qiniu-java-sdk.version>
         <spring-boot-starter-json.version>2.0.4.RELEASE</spring-boot-starter-json.version>
         <spring-boot-starter-mail.version>2.0.4.RELEASE</spring-boot-starter-mail.version>
-	</properties>
+        <springfox-swagger-ui.version>2.7.0</springfox-swagger-ui.version>
+        <springfox-swagger2.version>2.7.0</springfox-swagger2.version>
+    </properties>
 
     <!--统一管理模块-->
-	<modules>
-
+    <modules>
+        <module>backend_admin</module>
     </modules>
 
     <!---->
@@ -135,9 +137,33 @@
                 <artifactId>jackson-databind</artifactId>
                 <version>${jackson-databind.version}</version>
             </dependency>
+
+            <!--swagger2 依赖-->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${springfox-swagger2.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${springfox-swagger-ui.version}</version>
+            </dependency>
 		</dependencies>
 	</dependencyManagement>
     <dependencies>
+
+        <!--swagger2 依赖-->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+        </dependency>
         <!-- 热部署模块 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -156,8 +182,13 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
     </dependencies>
-  
+
   <profiles>
     	<profile>
 	    	<!-- dev 环境 -->
